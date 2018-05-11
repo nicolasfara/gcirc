@@ -5,7 +5,7 @@
 #include "rxtx_mode.h"
 
 void check_battery() {
-    if(BLOW_GetValue()) {
+    if(!BLOW_GetValue()) {
         // Se sono in tx mode switcho momentaneamente in rx
         if(is_tx_mode()) {
             set_rx_mode();
