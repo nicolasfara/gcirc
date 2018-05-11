@@ -11,7 +11,7 @@
 #define to_sec(x) (6590 / 7 * x)
 
 #define DEBOUNCE_TIME       16  //millisecondi
-#define ALLARM_DELAY_PULS2  350 //millisecondi
+#define ALLARM_DELAY_PULS2  600 //millisecondi
 #define DELAY_CHANNEL       100 //millisecondi
 #define VOLUME_DELAY        100 //millisecondi
 #define INV_SDNT_SDNR       5 //millisecondi
