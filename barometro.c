@@ -17,7 +17,9 @@ char check_work()
 uint24_t read_pressure() 
 {   
     uint8_t try = 100;
+    //setup osr and channel
     writeReg[0] = 0x40 | 2 << 2;
+    //read pressure command
     writeReg2[0] = 0x30;
     
     I2C2_MasterWriteTRBBuild(&TRB[0], writeReg, 1, ADDRESS);
@@ -25,6 +27,7 @@ uint24_t read_pressure()
     I2C2_MasterReadTRBBuild(&TRB[2], readPress, 3, ADDRESS);
     
     I2C2_MasterTRBInsert(3, TRB, &status);
+    //timeout of 100 retry
     while (status == I2C2_MESSAGE_PENDING && --try > 0);
     if(!try) {
         stop = 1;
@@ -43,5 +46,5 @@ float read_meters() {
     if(val == -1) {
         return -1;
     }
-    return (val - 101325) / (9.81 * 1030.00);
+    return (val - SEA_PRESSURE) / (ACC_GRAVITY * WATER_DENSITY);
 }

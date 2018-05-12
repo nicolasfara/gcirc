@@ -8,6 +8,7 @@
 #include "check_barometro.h"
 #include "check_battery.h"
 #include "test_battery_barometer.h"
+#include "funzioni_tx_rx.h"
 
 char tmr0_of = 0;
 char tmr2_of = 0;
@@ -25,16 +26,19 @@ void tmr2_overflow()
 void rxtx_allarm()
 {
     while(1) {
-        SoundChip_Play(TX_ALLARME);
+        /*SoundChip_Play(TX_ALLARME);
         wait_message();
 
         __delay_ms(5);
         set_tx_mode();
         __delay_ms(5);
+        SoundChip_Play(TX_ALLARME);*/
+        
+        tx_rx_alarm();
 
         TMR0_WriteTimer(0);
         TMR0_StartTimer();
-        SoundChip_Play(TX_ALLARME);
+
 
         //Attendo che il timer vada in overflow dopo 2 minuti
         while (!tmr0_of) {
@@ -83,7 +87,7 @@ void cambio_canale()
 {
     while(!PULS2_GetValue());
     while(1) {
-        char channel = (IDCH0_GetValue() << 1 | IDCH1_GetValue());
+        uint8_t channel = (IDCH0_GetValue() << 1 | IDCH1_GetValue());
         switch(channel)
         {
             case 0:

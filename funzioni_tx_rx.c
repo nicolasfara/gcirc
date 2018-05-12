@@ -10,6 +10,5 @@ void tx_rx_alarm()
     wait_message();
     __delay_ms(5);
     set_tx_mode();
-    SoundChip_Play(TX_ALLARME);
-    
+    SoundChip_Play(TX_ALLARME);    
 }
