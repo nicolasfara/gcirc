@@ -21,6 +21,9 @@ extern "C" {
 #define READ                        0x01
 #define WRITE                       0x00
 #define SLAVE_I2C_GENERIC_RETRY_MAX 100
+#define WATER_DENSITY               1030
+#define ACC_GRAVITY                 9.81
+#define SEA_PRESSURE                101325
     
 float read_meters();
 uint24_t read_pressure();
