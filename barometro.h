@@ -12,11 +12,6 @@
 extern "C" {
 #endif
 
-#define METRI_5                     0.49 //BAR
-#define METRI_10                    0.98
-#define METRI_15                    1.47
-#define METRI_20                    1.96
-#define METRI_30                    2.94
 #define ADDRESS                     0x76
 #define READ                        0x01
 #define WRITE                       0x00
