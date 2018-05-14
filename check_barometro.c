@@ -9,6 +9,7 @@ char flag10 = 0;
 char flag15 = 0;
 char flag20 = 0;
 char alarmCount = 0;
+uint24_t time;
 
 void play(unsigned int code) {
     SoundChip_Play(code);
@@ -58,12 +59,14 @@ void check_barometro() {
             flag20 = 1;
             alarmCount = 0;
         } else if(metri >= 29 && alarmCount <= 4) {
-            play(PROF_30M);
+            if(++time == to_sec(CHECK_BATT_BAR_TIME)) {
+                play(PROF_30M);
+                alarmCount++;
+            }            
             flag5 = 0;
             flag10 = 0;
             flag15 = 0;
-            flag20 = 0;
-            alarmCount++;
+            flag20 = 0;            
         }        
     }
 }
