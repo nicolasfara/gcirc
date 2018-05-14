@@ -46,5 +46,5 @@ float read_meters() {
     if(val == -1) {
         return -1;
     }
-    return (val - SEA_PRESSURE) / (ACC_GRAVITY * WATER_DENSITY);
+    return 2.5 * (val - SEA_PRESSURE) / (ACC_GRAVITY * WATER_DENSITY);
 }
