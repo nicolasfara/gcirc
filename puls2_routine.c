@@ -33,6 +33,7 @@ void rxtx_allarm()
         set_tx_mode();
         __delay_ms(5);
         SoundChip_Play(TX_ALLARME);*/
+        TMR1_StopTimer();
         
         tx_rx_alarm();
 
@@ -51,6 +52,8 @@ void rxtx_allarm()
                     __delay_ms(5);
                     SoundChip_Play(FINE_ALLARME);
                     wait_message();
+                    TMR1_Reload();
+                    TMR1_StartTimer();
                     return; //Esco dal ciclo
                 }
             }        
@@ -66,20 +69,24 @@ void rxtx_allarm()
         
         TMR2_WriteTimer(0);
         TMR2_StartTimer();
+        TMR1_Reload();
+        TMR1_StartTimer();
         while (!tmr2_of) {
-            test_battery_barometro(CHECK_BATT_BAR_TIME);
             if(!PULS2_GetValue()) {
                 __delay_ms(DEBOUNCE_TIME);
                 if(!PULS2_GetValue()) {
                     TMR2_StopTimer();
                     SoundChip_Play(FINE_ALLARME);
                     wait_message();
+                    TMR1_Reload();
+                    TMR1_StartTimer();
                     return;
                 }
             }
         }
         tmr2_of = 0;
         TMR2_StopTimer();
+        TMR1_StopTimer();
     }    
 }
 

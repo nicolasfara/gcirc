@@ -13,13 +13,13 @@
         <itemPath>mcc_generated_files/tmr0.h</itemPath>
         <itemPath>mcc_generated_files/tmr2.h</itemPath>
         <itemPath>mcc_generated_files/mcc.h</itemPath>
+        <itemPath>mcc_generated_files/tmr1.h</itemPath>
       </logicalFolder>
       <itemPath>puls1_routine.h</itemPath>
       <itemPath>puls2_routine.h</itemPath>
       <itemPath>rxtx_mode.h</itemPath>
       <itemPath>sintetizzatore.h</itemPath>
       <itemPath>startup_sintetizzatore.h</itemPath>
-      <itemPath>test_battery_barometer.h</itemPath>
       <itemPath>indirizzi_messaggi.h</itemPath>
       <itemPath>funzioni_tx_rx.h</itemPath>
       <itemPath>check_battery.h</itemPath>
@@ -43,18 +43,18 @@
         <itemPath>mcc_generated_files/tmr2.c</itemPath>
         <itemPath>mcc_generated_files/mcc.c</itemPath>
         <itemPath>mcc_generated_files/device_config.c</itemPath>
+        <itemPath>mcc_generated_files/tmr1.c</itemPath>
       </logicalFolder>
       <itemPath>main.c</itemPath>
       <itemPath>puls1_routine.c</itemPath>
       <itemPath>puls2_routine.c</itemPath>
       <itemPath>rxtx_mode.c</itemPath>
       <itemPath>sintetizzatore.c</itemPath>
-      <itemPath>startup_sintetizzatore.c</itemPath>
-      <itemPath>test_battery_barometer.c</itemPath>
       <itemPath>funzioni_tx_rx.c</itemPath>
       <itemPath>barometro.c</itemPath>
       <itemPath>check_barometro.c</itemPath>
       <itemPath>check_battery.c</itemPath>
+      <itemPath>startup_sintetizzatore.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -74,7 +74,7 @@
         <platformTool>PICkit3PlatformTool</platformTool>
         <languageToolchain>XC8</languageToolchain>
         <languageToolchainVersion>1.45</languageToolchainVersion>
-        <platform>3</platform>
+        <platform>2</platform>
       </toolsSet>
       <compileType>
         <linkerTool>

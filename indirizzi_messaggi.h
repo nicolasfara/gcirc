@@ -8,7 +8,7 @@
 #ifndef INDIRIZZI_MESSAGGI_H
 #define	INDIRIZZI_MESSAGGI_H
 
-#define to_sec(x) (6590 / 7 * x)
+#define to_sec(x) (6590 / 6 * x)
 
 #define DEBOUNCE_TIME       16  //millisecondi
 #define ALLARM_DELAY_PULS2  600 //millisecondi

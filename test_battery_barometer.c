@@ -8,9 +8,9 @@ uint24_t timing = 0;
 
 void test_battery_barometro(char time)
 {
-    if(++timing == to_sec(time)) {
+    if(timing++ == to_sec(time)) {
         timing = 0;
-        check_battery();        
+        check_battery();         
     } 
-    check_barometro();
+    //check_barometro();
 }

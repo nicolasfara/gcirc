@@ -70,6 +70,10 @@ void interrupt INTERRUPT_InterruptManager (void)
         {
             TMR2_ISR();
         } 
+        else if(PIE4bits.TMR1IE == 1 && PIR4bits.TMR1IF == 1)
+        {
+            TMR1_ISR();
+        } 
         else
         {
             //Unhandled Interrupt

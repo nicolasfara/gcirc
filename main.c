@@ -52,6 +52,8 @@
 #include "test_battery_barometer.h"
 #include "barometro.h"
 
+uint24_t timing = 0;
+
 /*
                          Main application
  */
@@ -67,7 +69,9 @@ void main(void)
     
     initialize_sintetizzatore();
     TMR0_StopTimer();
+    //TMR1_StopTimer();
     TMR2_StopTimer();
+    
     //Effettuo una lettura per verificare che il sensore risponda
     read_meters();
 
@@ -77,7 +81,12 @@ void main(void)
         poll_puls2();
         //Controllo ogni 30 secondi circa senza fare busy waiting, altrimenti i pulsanti in questo lasso di tempo
         //non vengono controllati
-        test_battery_barometro(CHECK_BATT_BAR_TIME);
+        //test_battery_barometro(CHECK_BATT_BAR_TIME);
+        /*if(timing++ == to_sec(CHECK_BATT_BAR_TIME)) {
+            timing = 0;
+            check_battery();         
+        }*/
+        check_barometro();
     }
 }
 /**

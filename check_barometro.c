@@ -9,7 +9,7 @@ char flag10 = 0;
 char flag15 = 0;
 char flag20 = 0;
 char alarmCount = 0;
-uint24_t time;
+uint24_t time = 0;
 
 void play(unsigned int code) {
     SoundChip_Play(code);
@@ -30,6 +30,13 @@ void check_barometro() {
     } else {
         //sono in rx e comunico al sintetizzatore le profondita' con margine di 2 metri
         //Le flag senrvono a non ripetere continuamente l'altezza ma solo quando si cambia soglia
+        if(metri < 4) {
+            flag5 = 0;
+            flag10 = 0;
+            flag15 = 0;
+            flag20 = 0;
+            alarmCount = 0;
+        }
         if(metri >= 4 && metri <= 6 && !flag5) {
             play(PROF_5M);
             flag5 = 1;
@@ -58,15 +65,32 @@ void check_barometro() {
             flag15 = 0;
             flag20 = 1;
             alarmCount = 0;
-        } else if(metri >= 29 && alarmCount <= 4) {
-            if(++time == to_sec(CHECK_BATT_BAR_TIME)) {
-                play(PROF_30M);
-                alarmCount++;
-            }            
+        } else if(metri >= 29) {
             flag5 = 0;
             flag10 = 0;
             flag15 = 0;
             flag20 = 0;            
         }        
     }
+}
+
+char countTime() 
+{
+    if(alarmCount == 4) {
+        return 1;
+    }
+    return 0;
+}
+
+void incrementWarning()
+{
+    alarmCount++;
+}
+
+char checkWarning()
+{
+    if(read_meters() > 29.0) {
+        return 1;
+    }
+    return 0;
 }

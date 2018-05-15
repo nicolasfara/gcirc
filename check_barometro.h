@@ -13,6 +13,9 @@ extern "C" {
 #endif
 
 void check_barometro();
+void incrementWarning();
+char countTime();
+char checkWarning();
 
 
 #ifdef	__cplusplus
