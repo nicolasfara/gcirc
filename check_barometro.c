@@ -30,42 +30,42 @@ void check_barometro() {
     } else {
         //sono in rx e comunico al sintetizzatore le profondita' con margine di 2 metri
         //Le flag senrvono a non ripetere continuamente l'altezza ma solo quando si cambia soglia
-        if(metri < 4) {
+        if(metri < DEPTH_1) {
             flag5 = 0;
             flag10 = 0;
             flag15 = 0;
             flag20 = 0;
             alarmCount = 0;
         }
-        if(metri >= 4 && metri <= 6 && !flag5) {
+        if(metri >= DEPTH_1 - DELTA && metri <= DEPTH_1 + DELTA && !flag5) {
             play(PROF_5M);
             flag5 = 1;
             flag10 = 0;
             flag15 = 0;
             flag20 = 0;
             alarmCount = 0;
-        } else if(metri >= 9 && metri <= 12 && !flag10) {
+        } else if(metri >= DEPTH_2 - DELTA && metri <= DEPTH_2 + DELTA && !flag10) {
             play(PROF_10M);
             flag5 = 0;
             flag10 = 1;
             flag15 = 0;
             flag20 = 0;
             alarmCount = 0;
-        } else if(metri >= 14 && metri <= 17 && !flag15) {
+        } else if(metri >= DEPTH_3 - DELTA && metri <= DEPTH_3 + DELTA && !flag15) {
             play(PROF_15M);
             flag5 = 0;
             flag10 = 0;
             flag15 = 1;
             flag20 = 0;
             alarmCount = 0;
-        } else if(metri >= 19 && metri <= 22 && !flag20) {
+        } else if(metri >= DEPTH_4 - DELTA && metri <= DEPTH_4 + DELTA && !flag20) {
             play(PROF_20M);
             flag5 = 0;
             flag10 = 0;
             flag15 = 0;
             flag20 = 1;
             alarmCount = 0;
-        } else if(metri >= 29) {
+        } else if(metri >= DEPTH_5 - DELTA) {
             flag5 = 0;
             flag10 = 0;
             flag15 = 0;

@@ -11,6 +11,14 @@
 #ifdef	__cplusplus
 extern "C" {
 #endif
+    
+#define DEPTH_1 5  //metri
+#define DEPTH_2 10
+#define DEPTH_3 15
+#define DEPTH_4 20
+#define DEPTH_5 30
+#define DELTA   1
+
 
 void check_barometro();
 void incrementWarning();

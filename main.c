@@ -81,11 +81,6 @@ void main(void)
         poll_puls2();
         //Controllo ogni 30 secondi circa senza fare busy waiting, altrimenti i pulsanti in questo lasso di tempo
         //non vengono controllati
-        //test_battery_barometro(CHECK_BATT_BAR_TIME);
-        /*if(timing++ == to_sec(CHECK_BATT_BAR_TIME)) {
-            timing = 0;
-            check_battery();         
-        }*/
         check_barometro();
     }
 }
