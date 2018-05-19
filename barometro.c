@@ -16,6 +16,7 @@ char check_work()
 
 uint24_t read_pressure() 
 {   
+
     uint8_t try = 100;
     //setup osr and channel
     writeReg[0] = 0x40 | 2 << 2;
@@ -36,8 +37,8 @@ uint24_t read_pressure()
     
     uint24_t msb = (readPress[0] & 0x0f) * 65536;
     uint24_t csb = (readPress[1] * 256) & 0x00ffff;
-    uint24_t lsb = readPress[2] * 256 & 0x0000ff;
-    
+    uint24_t lsb = readPress[2] & 0x0000ff;
+
     return (msb + csb + lsb) & 0x00ffffff;
 }
 

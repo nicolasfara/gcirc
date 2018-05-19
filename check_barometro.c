@@ -10,6 +10,7 @@ char flag15 = 0;
 char flag20 = 0;
 char alarmCount = 0;
 uint24_t time = 0;
+float metri;
 
 void play(unsigned int code) {
     SoundChip_Play(code);
@@ -20,7 +21,7 @@ void check_barometro() {
     if(check_work()) {
         return;
     }
-    float metri = read_meters();
+    metri = read_meters();
     //sono in tx mode e rilevo una profondita pericolosa
     if(is_tx_mode() && metri >= 30) {
         set_rx_mode();
@@ -30,7 +31,7 @@ void check_barometro() {
     } else {
         //sono in rx e comunico al sintetizzatore le profondita' con margine di 2 metri
         //Le flag senrvono a non ripetere continuamente l'altezza ma solo quando si cambia soglia
-        if(metri < DEPTH_1) {
+        if(metri < DEPTH_1 - DELTA) {
             flag5 = 0;
             flag10 = 0;
             flag15 = 0;
@@ -66,6 +67,10 @@ void check_barometro() {
             flag20 = 1;
             alarmCount = 0;
         } else if(metri >= DEPTH_5 - DELTA) {
+            if(alarmCount == 0) {
+                play(PROF_30M);
+                alarmCount++;
+            }
             flag5 = 0;
             flag10 = 0;
             flag15 = 0;
@@ -89,7 +94,7 @@ void incrementWarning()
 
 char checkWarning()
 {
-    if(read_meters() > 29.0) {
+    if(metri > 29.0) {
         return 1;
     }
     return 0;

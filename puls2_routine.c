@@ -72,6 +72,7 @@ void rxtx_allarm()
         TMR1_Reload();
         TMR1_StartTimer();
         while (!tmr2_of) {
+            check_barometro();
             if(!PULS2_GetValue()) {
                 __delay_ms(DEBOUNCE_TIME);
                 if(!PULS2_GetValue()) {
