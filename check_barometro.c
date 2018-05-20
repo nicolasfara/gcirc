@@ -30,9 +30,9 @@ void check_barometro() {
         set_tx_mode();
     } else {
         //sono in rx e comunico al sintetizzatore le profondita' con margine di 2 metri
-        //Le flag senrvono a non ripetere continuamente l'altezza ma solo quando si cambia soglia
+        //Le flag servono a non ripetere continuamente l'altezza ma solo quando si cambia soglia
         if(metri < DEPTH_1 - DELTA) {
-            flag5 = 0;
+            //flag5 = 0;
             flag10 = 0;
             flag15 = 0;
             flag20 = 0;
